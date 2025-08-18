@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: anthos/anthos-netapp-overview.html 
+keywords: NetApp, ONTAP, Element, Storage 
+summary: NetApp tiene varias plataformas de almacenamiento que están calificadas con nuestro Trident Storage Orchestrator para aprovisionar almacenamiento para aplicaciones implementadas en Anthos. 
+---
+= Descripción general del almacenamiento de NetApp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp tiene varias plataformas de almacenamiento que están calificadas con nuestro Trident Storage Orchestrator para aprovisionar almacenamiento para aplicaciones implementadas como contenedores.
+
+image:a-w-n-netapp-overview.png["Figura que muestra el diálogo de entrada/salida o representa contenido escrito"]
+
+* Los sistemas AFF y FAS ejecutan NetApp ONTAP y brindan almacenamiento para casos de uso basados en archivos (NFS) y en bloques (iSCSI).
+* Cloud Volumes ONTAP y ONTAP Select ofrecen los mismos beneficios en la nube y en el espacio virtual respectivamente.
+* Google Cloud NetApp Volumes (GCP) y Azure NetApp Files proporcionan almacenamiento basado en archivos en la nube.
+* Amazon FSx ONTAP es un servicio completamente administrado en AWS que proporciona almacenamiento para casos de uso basados en archivos.
+
+
+
+NOTE: Cada sistema de almacenamiento del portafolio de NetApp puede facilitar tanto la administración como el movimiento de datos entre los sitios locales y la nube, garantizando que sus datos estén donde están sus aplicaciones.

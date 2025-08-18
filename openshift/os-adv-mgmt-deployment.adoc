@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: openshift/os-adv-mgmt-deployment.html 
+keywords: OpenShift, OCP, Trident, NetApp ONTAP, ONTAP, Trident, Red Hat OpenShift, Advanced Cluster Management, Advanced Cluster Management for Kubernetes 
+summary: Gestión avanzada de clústeres para Kubernetes en Red Hat OpenShift con NetApp. 
+---
+= Implementar la gestión avanzada de clústeres para Kubernetes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para instalar Advanced Cluster Management for Kubernetes en un clúster de OpenShift, complete los siguientes pasos:
+
+. Seleccione un clúster OpenShift como clúster central e inicie sesión en él con privilegios de administrador del clúster.
+. Vaya a Operadores > Centro de operadores y busque Administración avanzada de clústeres para Kubernetes.
++
+image:redhat-openshift-066.png["Azulejo ACM"]
+
+. Seleccione Administración avanzada de clústeres para Kubernetes y haga clic en Instalar.
++
+image:redhat-openshift-067.png["Detalles de los mosaicos ACM"]
+
+. En la pantalla Instalar operador, proporcione los detalles necesarios (NetApp recomienda conservar los parámetros predeterminados) y haga clic en Instalar.
++
+image:redhat-openshift-068.png["Instalar el mosaico del operador ACM"]
+
+. Espere a que se complete la instalación del operador.
++
+image:redhat-openshift-069.png["Instalación del operador ACM en curso"]
+
+. Una vez instalado el operador, haga clic en Crear MultiClusterHub.
++
+image:redhat-openshift-070.png["Operador ACM Multiclusterhub"]
+
+. En la pantalla Crear MultiClusterHub, haga clic en Crear después de proporcionar los detalles.  Esto inicia la instalación de un concentrador multiclúster.
++
+image:redhat-openshift-071.png["Pantalla de creación de concentrador multiclúster"]
+
+. Una vez que todos los pods pasan al estado En ejecución en el espacio de nombres open-cluster-management y el operador pasa al estado Correcto, se instala Advanced Cluster Management para Kubernetes.
++
+image:redhat-openshift-072.png["Operador ACM instalado"]
+
+. La instalación del concentrador tarda un tiempo en completarse y, una vez realizada, el concentrador MultiCluster pasa al estado en ejecución.
++
+image:redhat-openshift-073.png["Preparado para concentrador multiclúster"]
+
+. Crea una ruta en el espacio de nombres open-cluster-management.  Conéctese a la URL en la ruta para acceder a la consola de administración avanzada de clúster.
++
+image:redhat-openshift-074.png["Ruta de la consola ACM"]
+
+

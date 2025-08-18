@@ -1,0 +1,103 @@
+---
+section: openshift
+title: Red Hat OpenShift con NetApp
+pdf-filename: Red Hat OpenShift con NetApp
+entries:
+- title: Descripción general de la solución
+  url: "/openshift/os-solution-overview.html"
+- title: Red Hat Openshift
+  entries:
+  - title: Descripción general de Openshift
+    url: "/openshift/os-overview.html"
+  - title: OpenShift en hardware físico
+    url: "/openshift/os-on-bm.html"
+  - title: OpenShift en Red Hat OpenStack
+    url: "/openshift/os-on-openstack.html"
+  - title: OpenShift en Red Hat Virtualization
+    url: "/openshift/os-on-rhv.html"
+  - title: OpenShift en VMware vSphere
+    url: "/openshift/os-on-vmw.html"
+  - title: OpenShift en AWS
+    url: "/openshift/os-on-aws-rosa.html"
+- title: Sistemas de almacenamiento NetApp
+  entries:
+  - title: ONTAP de NetApp
+    url: "/openshift/os-netapp-ontap.html"
+  - title: NetApp Element
+    url: "/openshift/os-netapp-element.html"
+- title: Integraciones de almacenamiento de NetApp
+  entries:
+  - title: Descripción general de las integraciones de almacenamiento de NetApp
+    url: "/openshift/os-storint-overview.html"
+  - title: Trident de NetApp
+    entries:
+    - title: Descripción general de NetApp Trident
+      url: "/openshift/os-trident-overview.html"
+    - title: NFS de NetApp ONTAP
+      url: "/openshift/os-trident-ontap-nfs.html"
+    - title: iSCSI de NetApp ONTAP
+      url: "/openshift/os-trident-ontap-iscsi.html"
+    - title: NetApp Element
+      url: "/openshift/os-trident-element-iscsi.html"
+- title: Opciones de configuración avanzadas
+  entries:
+  - title: Explorar las opciones del balanceador de carga
+    entries:
+    - title: Acerca de las opciones del balanceador de carga
+      url: "/openshift/os-load-balancers.html"
+    - title: Instalar el balanceador de carga MetalLB
+      url: "/openshift/os-lb-metallb.html"
+    - title: Instalar el balanceador de carga F5 BIG-IP
+      url: "/openshift/os-lb-f5bigip.html"
+  - title: Crear registros de imágenes privados
+    url: "/openshift/os-private-registry.html"
+- title: Validación de soluciones y casos de uso
+  entries:
+  - title: Descripción general de la validación y los casos de uso
+    url: "/openshift/os-use-cases.html"
+  - title: Implementar la canalización de CI/CD de Jenkins con almacenamiento persistente
+    url: "/openshift/os-use-case-pipeline.html"
+  - title: Configurar multi-tenencia
+    entries:
+    - title: Acerca de la configuración de la multitenencia
+      url: "/openshift/os-multitenancy-overview.html"
+    - title: Arquitectura
+      url: "/openshift/os-multi-tenant-architecture.html"
+    - title: Descripción general de la configuración
+      url: "/openshift/os-multitenancy-configuration.html"
+    - title: Requisitos previos de configuración
+      url: "/openshift/os-multitenancy-config-prereq.html"
+    - title: Tareas del administrador del clúster
+      url: "/openshift/os-multitenancy-clstr-admin-task.html"
+    - title: Tareas del administrador de almacenamiento
+      url: "/openshift/os-multitenancy-stor-admin-tasks.html"
+    - title: Validación
+      url: "/openshift/os-multitenancy-validation.html"
+    - title: Escalada
+      url: "/openshift/os-multitenancy-scaling.html"
+- title: Gestión avanzada de clústeres para Kubernetes
+  entries:
+  - title: Acerca de ACM para Kubernetes
+    url: "/openshift/os-adv-mgmt-overview.html"
+  - title: Implementar ACM para Kubernetes
+    entries:
+    - title: Prerrequisitos
+      url: "/openshift/os-adv-mgmt-deployment-prereq.html"
+    - title: Implementar a través del operador
+      url: "/openshift/os-adv-mgmt-deployment.html"
+    - title: Gestión del ciclo de vida del clúster
+      url: "/openshift/os-adv-mgmt-cluster-lcm.html"
+    - title: Gestión del ciclo de vida de las aplicaciones
+      url: "/openshift/os-adv-mgmt-app-lcm.html"
+    - title: Gobernanza y riesgo
+      url: "/openshift/os-adv-mgmt-governance-risk.html"
+    - title: Observabilidad
+      url: "/openshift/os-adv-mgmt-observability.html"
+    - title: Crear recursos
+      url: "/openshift/os-adv-mgmt-create-resources.html"
+- title: Protección de datos mediante Trident Protect
+  url: "/openshift/os-trident-protect.html"
+- title: Protección de datos mediante herramientas de terceros
+  url: "/openshift/os-velero.html"
+- title: Información adicional
+  url: "/openshift/os-additional-information.html"

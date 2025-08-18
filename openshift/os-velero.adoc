@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: openshift/os-velero.html 
+keywords: data protection, DP, Velero, 3rd party tools 
+summary:  
+---
+= Protección de datos para aplicaciones de contenedores y máquinas virtuales mediante herramientas de terceros
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta solución muestra cómo utilizar Velero que está integrado con el operador OADP en la plataforma Red Hat OpenShift Container para realizar operaciones de protección de datos para contenedores y máquinas virtuales.
+
+. Para obtener detalles sobre cómo crear y restaurar desde una copia de seguridad para aplicaciones de contenedor en la plataforma OpenShift Container, consultelink:https://docs.netapp.com/us-en/netapp-solutions-cloud/openshift/os-dp-velero-solution.html["aquí"^] .
+. Para obtener detalles sobre cómo crear y restaurar desde una copia de seguridad para máquinas virtuales en OpenShift Virtualization implementadas en la plataforma OpenShift Container, consultelink:https://docs.netapp.com/us-en/netapp-solutions-virtualization/openshift/osv-vm-dp-using-velero-overview.html["aquí"^] .
+

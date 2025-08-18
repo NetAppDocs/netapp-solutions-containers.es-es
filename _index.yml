@@ -1,0 +1,68 @@
+---
+indexpage:
+  title: Soluciones de contenedores de NetApp
+  summary: Las soluciones de contenedores de NetApp son implementaciones validadas
+    de muchos orquestadores de contenedores populares basados en Kubernetes y su integración
+    con los sistemas y software de administración de almacenamiento de NetApp .
+  lead: Las soluciones de contenedores de NetApp son implementaciones validadas de
+    muchos orquestadores de contenedores populares basados en Kubernetes y su integración
+    con el software y los sistemas de administración de almacenamiento de NetApp .
+  tiles:
+  - title: Empezar
+    links:
+    - title: Qué hay de nuevo
+      url: "/whats-new.html"
+    - title: Obtenga más información sobre NetApp Trident para contenedores
+      url: https://netapp.io/persistent-storage-provisioner-for-kubernetes/
+    - title: Blogs
+      url: "/blogs.html"
+    - title: Vídeos y demostraciones
+      url: "/videos/index.html"
+  - title: Anthos con NetApp
+    links:
+    - title: Descripción general de la solución
+      url: "/anthos/anthos-solution-overview.html"
+    - title: Clústeres Anthos en VMware
+      url: "/anthos/anthos-vmw.html"
+    - title: Anthos sobre metal desnudo
+      url: "/anthos/anthos-bm.html"
+    - title: Integraciones de almacenamiento de NetApp
+      url: "/anthos/anthos-storint-overview.html"
+    - title: Caso de uso
+      url: "/anthos/anthos-deploy-app-cloud-console.html"
+  - title: Red Hat OpenShift con NetApp
+    links:
+    - title: Descripción general de la solución
+      url: "/openshift/os-solution-overview.html"
+    - title: Acerca de Red Hat OpenShift
+      url: "/openshift/os-overview.html"
+    - title: Acerca de OpenShift en AWS
+      url: "/openshift/os-rosa-solution-overview.html"
+    - title: Integraciones de almacenamiento de NetApp
+      url: "/openshift/os-storint-overview.html"
+    - title: Casos de uso
+      url: "/openshift/os-use-cases.html"
+  - title: VMware Tanzu con NetApp
+    links:
+    - title: Descripción general de la solución
+      url: "/tanzu/vtwn-solution-overview.html"
+    - title: Acerca de VMware Tanzu
+      url: "/tanzu/vtwn-overview-vmware-tanzu.html"
+    - title: Integraciones de almacenamiento de NetApp
+      url: "/tanzu/vtwn-overview-storint.html"
+  - title: Soluciones para socios
+    links:
+    - title: Sitio web de Anthos
+      url: https://cloud.google.com/anthos
+    - title: Sitio web de Red Hat OpenShift
+      url: https://www.redhat.com/en/technologies/cloud-computing/openshift
+    - title: Sitio web de VMware Tanzu
+      url: https://tanzu.vmware.com/
+  - title: Solicitudes de soluciones y comentarios
+    links:
+    - title: Automatización de solicitudes
+      url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Request%20Automation]%0d%0a%0d%0aSolution%20Name:%20%0d%0aRequest%20Title:%20%0d%0aDescription:%0d%0aSuggestions:&title=Request%20Automation%20-%20%3Crequest_title%3E
+    - title: Proponer una nueva solución
+      url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Request%20Solution]%0d%0a%0d%0aSolution%20Use%20Case:%20%0d%0aSolution%20Description:%20%0d%0aAdditional%20Comments:&title=Request%20Solution%20-%20%3Csolution%3E
+    - title: Proporcionar retroalimentación sobre la solución
+      url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Solution%20Feedback]%0d%0a%0d%0aSolution%20Name:%20%0d%0aSolution%20Feedback:%20%0d%0aAdditional%20Comments:&title=Solution%20Feedback%20-%20%3Csolution%3E

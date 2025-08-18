@@ -1,0 +1,138 @@
+= Plataformas NetApp
+:allow-uri-read: 
+
+
+Las empresas están adoptando cada vez más prácticas de DevOps para crear nuevos productos, acortar los ciclos de lanzamiento y agregar rápidamente nuevas funciones.  Debido a su naturaleza ágil innata, los contenedores y los microservicios juegan un papel crucial en el apoyo a las prácticas de DevOps.  Sin embargo, practicar DevOps a escala de producción en un entorno empresarial presenta sus propios desafíos e impone ciertos requisitos en la infraestructura subyacente, como los siguientes:
+
+* Alta disponibilidad en todas las capas de la pila
+* Facilidad de procedimientos de implementación
+* Operaciones y actualizaciones sin interrupciones
+* Infraestructura programable e impulsada por API para mantenerse al día con la agilidad de los microservicios
+* Multitenencia con garantías de rendimiento
+* La capacidad de ejecutar cargas de trabajo virtualizadas y en contenedores simultáneamente
+* La capacidad de escalar la infraestructura de forma independiente en función de las demandas de carga de trabajo
+
+
+Red Hat OpenShift Container Platform es una plataforma Kubernetes empresarial totalmente compatible.  Red Hat realiza varias mejoras en Kubernetes de código abierto para ofrecer una plataforma de aplicaciones con todos los componentes totalmente integrados para crear, implementar y administrar aplicaciones en contenedores.
+
+Para obtener más información, visite el sitio web de OpenShift https://www.openshift.com["aquí"] .
+
+NetApp tiene varios sistemas de almacenamiento perfectos para centros de datos empresariales e implementaciones de nube híbrida.  La cartera de NetApp incluye los sistemas de almacenamiento NetApp ONTAP, NetApp Element y NetApp e-Series, todos los cuales pueden proporcionar almacenamiento persistente para aplicaciones en contenedores.
+
+Para obtener más información, visite el sitio web de NetApp https://www.netapp.com["aquí"] .
+
+Trident es un orquestador de almacenamiento de código abierto y totalmente compatible con contenedores y distribuciones de Kubernetes como {k8s_distribution_name}.
+
+Para obtener más información, visite el sitio web de Trident https://docs.netapp.com/us-en/trident/index.html["aquí"] .
+
+[role="normal"]
+NetApp tiene varias plataformas de almacenamiento que están calificadas con Trident para aprovisionar, proteger y administrar datos para aplicaciones en contenedores.
+
+image:redhat-openshift-043.png["Figura que muestra el diálogo de entrada/salida o representa contenido escrito"]
+
+* Los sistemas AFF y FAS ejecutan NetApp ONTAP y brindan almacenamiento para casos de uso basados en archivos (NFS) y en bloques (iSCSI).
+* Cloud Volumes ONTAP y ONTAP Select ofrecen los mismos beneficios en la nube y en el espacio virtual respectivamente.
+* Google Cloud NetApp Volumes (AWS/GCP) y Azure NetApp Files proporcionan almacenamiento basado en archivos en la nube.
+
+
+* Los sistemas de almacenamiento NetApp Element cubren casos de uso basados en bloques (iSCSI) en un entorno altamente escalable.
+
+
+
+NOTE: Cada sistema de almacenamiento del portafolio de NetApp puede facilitar tanto la administración como el movimiento de datos entre los sitios locales y la nube para que sus datos estén donde están sus aplicaciones.
+
+Las siguientes páginas contienen información adicional sobre los sistemas de almacenamiento de NetApp validados en la solución {solution_name}:
+
+* link:{ontap_page_link}["ONTAP de NetApp"]
+
+
+* link:{element_page_link}["NetApp Element"]
+
+
+[role="normal"]
+NetApp ONTAP es una poderosa herramienta de software de almacenamiento con capacidades como una GUI intuitiva, API REST con integración de automatización, análisis predictivo basado en IA y acciones correctivas, actualizaciones de hardware sin interrupciones e importación entre almacenamientos.
+
+Para obtener más información sobre el sistema de almacenamiento NetApp ONTAP , visite el sitio web https://www.netapp.com/data-management/ontap-data-management-software/["Sitio web de NetApp ONTAP"^] .
+
+ONTAP ofrece las siguientes características:
+
+* Un sistema de almacenamiento unificado con acceso simultáneo a datos y gestión de protocolos NFS, CIFS, iSCSI, FC, FCoE y FC-NVMe.
+* Los diferentes modelos de implementación incluyen configuraciones de hardware locales totalmente flash, híbridas y totalmente HDD; plataformas de almacenamiento basadas en máquinas virtuales en un hipervisor compatible como ONTAP Select; y en la nube como Cloud Volumes ONTAP.
+* Mayor eficiencia en el almacenamiento de datos en sistemas ONTAP con soporte para niveles automáticos de datos, compresión de datos en línea, deduplicación y compactación.
+* Almacenamiento controlado por QoS y basado en carga de trabajo.
+* Integración perfecta con una nube pública para organizar y proteger los datos.  ONTAP también ofrece sólidas capacidades de protección de datos que lo distinguen en cualquier entorno:
++
+** *Copias instantáneas de NetApp .*  Una copia de seguridad de datos rápida y en un momento determinado utilizando una cantidad mínima de espacio en disco y sin sobrecarga de rendimiento adicional.
+** * NetApp SnapMirror.*  Duplica las copias instantáneas de datos de un sistema de almacenamiento a otro.  ONTAP también permite reflejar datos en otras plataformas físicas y servicios nativos de la nube.
+** * NetApp SnapLock.*  Administración eficiente de datos no regrabables escribiéndolos en volúmenes especiales que no se pueden sobrescribir ni borrar durante un período designado.
+** * NetApp SnapVault.*  Realiza copias de seguridad de datos de varios sistemas de almacenamiento en una copia instantánea central que sirve como copia de seguridad para todos los sistemas designados.
+** * NetApp SyncMirror.*  Proporciona duplicación de datos a nivel RAID en tiempo real en dos complejos diferentes de discos que están conectados físicamente al mismo controlador.
+** * NetApp SnapRestore.*  Proporciona una restauración rápida de datos respaldados a pedido a partir de copias instantáneas.
+** * NetApp FlexClone.*  Proporciona aprovisionamiento instantáneo de una copia totalmente legible y escribible de un volumen NetApp basado en una copia Snapshot.
+
+
+
+
+Para obtener más información sobre ONTAP, consulte el https://docs.netapp.com/us-en/ontap/index.html["Centro de documentación de ONTAP 9"^] .
+
+
+NOTE: NetApp ONTAP está disponible en instalaciones locales, virtualizadas o en la nube.
+
+image:redhat-openshift-035.png["Figura que muestra el diálogo de entrada/salida o representa contenido escrito"]
+
+
+
+== Plataformas NetApp
+
+
+
+=== NetApp AFF/ FAS
+
+NetApp ofrece plataformas de almacenamiento robustas, all-flash (AFF) e híbridas de escalamiento horizontal (FAS), diseñadas a medida con rendimiento de baja latencia, protección de datos integrada y compatibilidad con múltiples protocolos.
+
+Ambos sistemas funcionan con el software de gestión de datos NetApp ONTAP , el software de gestión de datos más avanzado de la industria para una gestión de almacenamiento simplificada, de alta disponibilidad e integrada en la nube para brindar velocidad, eficiencia y seguridad de clase empresarial para sus necesidades de estructura de datos.
+
+Para obtener más información sobre las plataformas NETAPP AFF/ FAS , haga clic en https://docs.netapp.com/platstor/index.jsp["aquí"] .
+
+
+
+=== ONTAP Select
+
+ONTAP Select es una implementación definida por software de NetApp ONTAP que se puede implementar en un hipervisor en su entorno.  Se puede instalar en VMware vSphere o en KVM y proporciona toda la funcionalidad y experiencia de un sistema ONTAP basado en hardware.
+
+Para obtener más información sobre ONTAP Select, haga clic en https://docs.netapp.com/us-en/ontap-select/["aquí"] .
+
+
+
+=== Cloud Volumes ONTAP
+
+NetApp Cloud Volumes ONTAP es una versión implementada en la nube de NetApp ONTAP que se puede implementar en varias nubes públicas, incluidas Amazon AWS, Microsoft Azure y Google Cloud.
+
+Para obtener más información sobre Cloud Volumes ONTAP, haga clic en https://docs.netapp.com/us-en/occm/#discover-whats-new["aquí"] .
+
+[role="normal"]
+NetApp ofrece una serie de productos para ayudarlo a orquestar, administrar, proteger y migrar aplicaciones en contenedores con estado y sus datos.
+
+image:devops-with-netapp-001.png["Figura que muestra el diálogo de entrada/salida o representa contenido escrito"]
+
+NetApp Trident es un orquestador de almacenamiento de código abierto y totalmente compatible con contenedores y distribuciones de Kubernetes como {k8s_distribution_name}.  Para obtener más información, visite el sitio web de Trident https://docs.netapp.com/us-en/trident/index.html["aquí"] .
+
+Las siguientes páginas contienen información adicional sobre los productos de NetApp que han sido validados para la administración de aplicaciones y almacenamiento persistente en la solución {solution_name}:
+
+* link:{trident_overview_page_link}["Trident de NetApp"]
+
+
+[role="normal"]
+Trident es un orquestador de almacenamiento de código abierto y totalmente compatible con contenedores y distribuciones de Kubernetes como {k8s_distribution_name}.  Trident funciona con todo el portafolio de almacenamiento de NetApp , incluidos los sistemas de almacenamiento NetApp ONTAP y Element, y también admite conexiones NFS e iSCSI.  Trident acelera el flujo de trabajo de DevOps al permitir que los usuarios finales aprovisionen y administren almacenamiento desde sus sistemas de almacenamiento NetApp sin necesidad de la intervención de un administrador de almacenamiento.
+
+Un administrador puede configurar una serie de backends de almacenamiento según las necesidades del proyecto y los modelos del sistema de almacenamiento que habilitan funciones de almacenamiento avanzadas, incluida la compresión, tipos de discos específicos o niveles de QoS que garantizan un cierto nivel de rendimiento.  Una vez definidos, estos backends pueden ser utilizados por los desarrolladores en sus proyectos para crear reclamos de volumen persistentes (PVC) y para adjuntar almacenamiento persistente a sus contenedores a pedido.
+
+image:redhat-openshift-002.png["Figura que muestra el diálogo de entrada/salida o representa contenido escrito"]
+
+Trident tiene un ciclo de desarrollo rápido y, al igual que Kubernetes, se lanza cuatro veces al año.
+
+La última versión de Trident es 22.04, lanzada en abril de 2022.  Se puede encontrar una matriz de soporte para qué versión de Trident se ha probado con qué distribución de Kubernetes https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#supported-frontends-orchestrators["aquí"] .
+
+A partir de la versión 20.04, la configuración de Trident la realiza el operador de Trident .  El operador facilita las implementaciones a gran escala y brinda soporte adicional, incluida la autorreparación de los pods que se implementan como parte de la instalación de Trident .
+
+Con el lanzamiento de la versión 21.01, se puso a disposición un gráfico Helm para facilitar la instalación del operador Trident .

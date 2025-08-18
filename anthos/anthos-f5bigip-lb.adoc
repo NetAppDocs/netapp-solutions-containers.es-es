@@ -1,0 +1,197 @@
+---
+sidebar: sidebar 
+permalink: anthos/anthos-f5bigip-lb.html 
+summary: 'F5 BIG-IP es un controlador de entrega de aplicaciones (ADC) que ofrece un amplio conjunto de servicios avanzados de seguridad y gestión de tráfico de nivel de producción, como equilibrio de carga L4-L7, descarga SSL/TLS, DNS, firewall y muchos más.  Estos servicios aumentan drásticamente la disponibilidad, la seguridad y el rendimiento de sus aplicaciones.' 
+keywords: Anthos, GKE, Kubernetes, F5, BigIP, LoadBalancer 
+---
+= Instalación de balanceadores de carga F5 BIG-IP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+F5 BIG-IP es un controlador de entrega de aplicaciones (ADC) que ofrece un amplio conjunto de servicios avanzados de seguridad y gestión de tráfico de nivel de producción, como equilibrio de carga L4-L7, descarga SSL/TLS, DNS, firewall y más.  Estos servicios aumentan drásticamente la disponibilidad, la seguridad y el rendimiento de sus aplicaciones.
+
+F5 BIG-IP se puede implementar y consumir de varias maneras, incluso en hardware dedicado, en la nube o como un dispositivo virtual en las instalaciones.  Consulte la documentación aquí para explorar e implementar F5 BIG-IP.
+
+F5 BIG-IP fue la primera de las soluciones de balanceador de carga incluidas disponibles con Anthos On-Prem y se utilizó en varias de las primeras validaciones de socios de Anthos Ready para la solución Anthos con NetApp .
+
+
+NOTE: F5 BIG-IP se puede implementar en modo independiente o en modo clúster.  Para el propósito de esta validación, F5 BIG-IP se implementó en modo independiente.  Sin embargo, para fines de producción, NetApp recomienda crear un clúster de instancias de BIG-IP para evitar un único punto de falla.
+
+
+NOTE: Un sistema F5 BIG-IP se puede implementar en hardware dedicado, en la nube o como un dispositivo virtual local con versiones superiores a 12.x para que se integre con F5 CIS.  Para los fines de este documento, el sistema F5 BIG-IP fue validado como un dispositivo virtual, por ejemplo utilizando la edición BIG-IP VE.
+
+
+
+== Versiones validadas
+
+Esta solución utiliza el dispositivo virtual implementado en VMware vSphere.  La red para el dispositivo virtual F5 Big-IP se puede configurar en una configuración de dos o tres brazos según su entorno de red.  La implementación de este documento se basa en la configuración de dos brazos.  Se pueden encontrar detalles adicionales sobre la configuración del dispositivo virtual para su uso con Anthos. https://cloud.google.com/solutions/partners/installing-f5-big-ip-adc-for-gke-on-prem["aquí"] .
+
+El equipo de ingeniería de soluciones de NetApp ha validado las versiones de la siguiente tabla en nuestro laboratorio para que funcionen con implementaciones de Anthos On-Prem:
+
+|===
+
+
+| Hacer | Tipo | Versión 
+
+
+| F5 | BIG-IP VE | 15.0.1-0.0.11 
+
+
+| F5 | BIG-IP VE | 16.1.0-0.0.19 
+|===
+
+
+== Instalación
+
+Para instalar F5 BIG-IP, complete los siguientes pasos:
+
+. Descargue el archivo de la aplicación virtual Open Virtual Appliance (OVA) de F5 https://downloads.f5.com/esd/serveDownload.jsp?path=/big-ip/big-ip_v15.x/15.0.1/english/virtual-edition/&sw=BIG-IP&pro=big-ip_v15.x&ver=15.0.1&container=Virtual-Edition&file=BIGIP-15.0.1-0.0.11.ALL-vmware.ova["aquí"] .
++
+
+NOTE: Para descargar el dispositivo, el usuario debe registrarse en F5.  Proporcionan una licencia de demostración de 30 días para el balanceador de carga Big-IP Virtual Edition.  NetApp recomienda una licencia permanente de 10 Gbps para la implementación de producción de un dispositivo.
+
+. Haga clic con el botón derecho en el grupo de recursos de infraestructura y seleccione Implementar plantilla OVF.  Se iniciará un asistente que le permitirá seleccionar el archivo OVA que acaba de descargar en el Paso 1.  Haga clic en Siguiente.
++
+image:deploy-big-ip-001.png["Implementar un dispositivo Big-IP"]
+
+. Haga clic en Siguiente para continuar con cada paso y aceptar los valores predeterminados para cada pantalla presentada hasta llegar a la pantalla de selección de almacenamiento.  Seleccione el VM_Datastore en el que desea implementar la máquina virtual y haga clic en Siguiente.
+. La siguiente pantalla presentada por el asistente le permitirá personalizar las redes virtuales para su uso en el entorno.  Seleccione VM_Network para el campo Externo y seleccione Management_Network para el campo Administración.  Los modos interno y alta disponibilidad se utilizan para configuraciones avanzadas del dispositivo F5 Big-IP y no se configuran.  Estos parámetros se pueden dejar solos o se pueden configurar para conectarse a grupos de puertos distribuidos que no sean de infraestructura.  Haga clic en Siguiente.
++
+image:deploy-big-ip-002.png["Implementación del dispositivo Big_IP, parte 2"]
+
+. Revise la pantalla de resumen del dispositivo y, si toda la información es correcta, haga clic en Finalizar para iniciar la implementación.
+. Una vez implementado el dispositivo virtual, haga clic derecho sobre él y enciéndalo.  Debe recibir una dirección DHCP en la red de administración.  El dispositivo está basado en Linux y tiene VMware Tools implementado, por lo que puede ver la dirección DHCP que recibe en el cliente vSphere.
++
+image:deploy-big-ip-003.png["Implementación de un dispositivo Big-IP, parte 3"]
+
+. Abra un navegador web y conéctese al dispositivo en la dirección IP del paso anterior.  El inicio de sesión predeterminado es admin/admin y, después del primer inicio de sesión, el dispositivo le solicitará inmediatamente que cambie la contraseña de administrador.  Luego te regresa a una pantalla donde debes iniciar sesión con las nuevas credenciales.
++
+image:big-ip-config-001.png["Configuración de Big-IP"]
+
+. La primera pantalla solicita al usuario que complete la Utilidad de configuración.  Inicie la utilidad haciendo clic en Siguiente.
++
+image:big-ip-config-002.png["Configuración de Big-IP, parte 2"]
+
+. La siguiente pantalla solicita la activación de la licencia para el dispositivo.  Haga clic en Activar para comenzar.  Cuando se le solicite en la página siguiente, pegue la clave de licencia de evaluación de 30 días que recibió cuando se registró para la descarga o la licencia permanente que adquirió cuando compró el dispositivo.  Haga clic en Siguiente.
++
+image:big-ip-config-003.png["Configuración de Big-IP, parte 3"]
+
++
+
+NOTE: Para que el dispositivo realice la activación, la red definida en la interfaz de administración debe poder acceder a Internet.
+
+. En la siguiente pantalla, se presenta el Acuerdo de licencia de usuario final (EULA).  Si los términos de la licencia son aceptables, haga clic en Aceptar.
+. La siguiente pantalla cuenta el tiempo transcurrido mientras verifica los cambios de configuración que se han realizado hasta el momento.  Haga clic en Continuar para reanudar con la configuración inicial.
++
+image:big-ip-config-004.png["Configuración de Big-IP, parte 4"]
+
+. La ventana Cambio de configuración se cierra y la Utilidad de configuración muestra el menú Aprovisionamiento de recursos.  En esta ventana se enumeran las características que actualmente tienen licencia y las asignaciones de recursos actuales para el dispositivo virtual y cada servicio en ejecución.
++
+image:big-ip-config-005.png["Configuración de Big-IP, parte 5"]
+
+. Al hacer clic en la opción de menú Plataforma a la izquierda, se habilitan modificaciones adicionales de la plataforma.  Las modificaciones incluyen configurar la dirección IP de administración configurada con DHCP, configurar el nombre del host y la zona horaria en la que está instalado el dispositivo y proteger el dispositivo del acceso SSH.
++
+image:big-ip-config-006.png["Configuración de Big-IP, parte 6"]
+
+. A continuación, haga clic en el menú Red, que le permite configurar funciones de red estándar.  Haga clic en Siguiente para comenzar el asistente de configuración de red estándar.
++
+image:big-ip-config-007.png["Configuración de Big-IP, parte 7"]
+
+. La primera página del asistente configura la redundancia; deje los valores predeterminados y haga clic en Siguiente.  La siguiente página le permite configurar una interfaz interna en el balanceador de carga.  La interfaz 1.1 se asigna a la VMNIC denominada Interna en el asistente de implementación de OVF.
++
+image:big-ip-config-008.png["Configuración de Big-IP, parte 8"]
+
++
+
+NOTE: Los espacios en esta página para dirección IP propia, máscara de red y dirección IP flotante se pueden llenar con una IP no enrutable para usar como marcador de posición.  También se pueden llenar con una red interna que se haya configurado como un grupo de puertos distribuidos para invitados virtuales si está implementando la configuración de tres brazos.  Deben completarse para continuar con el asistente.
+
+. La siguiente página le permite configurar una red externa que se utiliza para asignar servicios a los pods implementados en Kubernetes.  Seleccione una IP estática del rango VM_Network, la máscara de subred adecuada y una IP flotante de ese mismo rango.  La interfaz 1.2 se asigna a la VMNIC denominada Externa en el asistente de implementación de OVF.
++
+image:big-ip-config-009.png["Configuración de Big-IP, parte 9"]
+
+. En la página siguiente, puede configurar una red de alta disponibilidad interna si está implementando varios dispositivos virtuales en el entorno.  Para continuar, debe completar los campos Dirección IP propia y Máscara de red, y debe seleccionar la interfaz 1.3 como Interfaz VLAN, que se asigna a la red HA definida por el asistente de plantilla OVF.
++
+image:big-ip-config-010.png["Configuración de Big-IP, parte 10"]
+
+. La siguiente página le permite configurar los servidores NTP.  Luego haga clic en Siguiente para continuar con la configuración de DNS.  Los servidores DNS y la lista de búsqueda de dominios ya deberían estar completados por el servidor DHCP.  Haga clic en Siguiente para aceptar los valores predeterminados y continuar.
+. Durante el resto del asistente, haga clic en Siguiente para continuar con la configuración de peering avanzada, cuya configuración está más allá del alcance de este documento.  Luego haga clic en Finalizar para salir del asistente.
+. Cree particiones individuales para el clúster de administración de Anthos y cada clúster de usuarios implementado en el entorno.  Haga clic en Sistema en el menú de la izquierda, navegue hasta Usuarios y haga clic en Lista de particiones.
++
+image:big-ip-config-011.png["Configuración de Big-IP, parte 11"]
+
+. La pantalla mostrada solo muestra la partición común actual.  Haga clic en Crear a la derecha para crear la primera partición adicional y asígnele un nombre. `GKE-Admin` .  Luego haga clic en Repetir y nombre la partición. `User-Cluster-1` .  Haga clic en el botón Repetir nuevamente para nombrar la siguiente partición `User-Cluster-2` .  Finalmente haga clic en Finalizado para completar el asistente.  La pantalla de lista de particiones regresa con todas las particiones ahora enumeradas.
++
+image:big-ip-config-012.png["Configuración de Big-IP, parte 12"]
+
+
+
+
+
+== Integración con Anthos
+
+Hay una sección en cada archivo de configuración, respectivamente para el clúster de administración y cada clúster de usuarios que elija implementar para configurar el balanceador de carga de modo que sea administrado por Anthos On Prem.
+
+El siguiente script es un ejemplo de la configuración de la partición para el clúster GKE-Admin.  Los valores que se deben descomentar y modificar se colocan en texto en negrita a continuación:
+
+[listing, subs="+quotes,+verbatim"]
+----
+# (Required) Load balancer configuration
+*loadBalancer:*
+  # (Required) The VIPs to use for load balancing
+  *vips:*
+    # Used to connect to the Kubernetes API
+    *controlPlaneVIP: "10.61.181.230"*
+    # # (Optional) Used for admin cluster addons (needed for multi cluster features). Must
+    # # be the same across clusters
+    # # addonsVIP: ""
+  # (Required) Which load balancer to use "F5BigIP" "Seesaw" or "ManualLB". Uncomment
+  # the corresponding field below to provide the detailed spec
+  *kind: F5BigIP*
+  # # (Required when using "ManualLB" kind) Specify pre-defined nodeports
+  # manualLB:
+  #   # NodePort for ingress service's http (only needed for user cluster)
+  #   ingressHTTPNodePort: 0
+  #   # NodePort for ingress service's https (only needed for user cluster)
+  #   ingressHTTPSNodePort: 0
+  #   # NodePort for control plane service
+  #   controlPlaneNodePort: 30968
+  #   # NodePort for addon service (only needed for admin cluster)
+  #   addonsNodePort: 31405
+  # # (Required when using "F5BigIP" kind) Specify the already-existing partition and
+  # # credentials
+  *f5BigIP:*
+    *address: "172.21.224.21"*
+    *credentials:*
+      *username: "admin"*
+      *password: "admin-password"*
+    *partition: "GKE-Admin"*
+  #   # # (Optional) Specify a pool name if using SNAT
+  #   # snatPoolName: ""
+  # (Required when using "Seesaw" kind) Specify the Seesaw configs
+  # seesaw:
+    # (Required) The absolute or relative path to the yaml file to use for IP allocation
+    # for LB VMs. Must contain one or two IPs.
+    #  ipBlockFilePath: ""
+    # (Required) The Virtual Router IDentifier of VRRP for the Seesaw group. Must
+    # be between 1-255 and unique in a VLAN.
+    #  vrid: 0
+    # (Required) The IP announced by the master of Seesaw group
+    #  masterIP: ""
+    # (Required) The number CPUs per machine
+    #  cpus: 4
+    # (Required) Memory size in MB per machine
+    #   memoryMB: 8192
+    # (Optional) Network that the LB interface of Seesaw runs in (default: cluster
+    # network)
+    #   vCenter:
+      # vSphere network name
+      #     networkName: VM_Network
+    # (Optional) Run two LB VMs to achieve high availability (default: false)
+    #   enableHA: false
+----

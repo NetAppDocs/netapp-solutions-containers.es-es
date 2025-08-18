@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: openshift/os-trident-protect.html 
+keywords: data protection, DP, Trident Protect 
+summary:  
+---
+= Protección de datos para aplicaciones de contenedores y máquinas virtuales mediante Trident Protect
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta solución muestra cómo utilizar Trident Protect para realizar operaciones de protección de datos para contenedores y máquinas virtuales.
+
+. Para obtener detalles sobre cómo crear instantáneas y copias de seguridad y restaurarlas para aplicaciones de contenedores en la plataforma OpenShift Container, consultelink:https://docs.netapp.com/us-en/netapp-solutions-cloud/openshift/os-dp-tp-solution.html["aquí"^] .
+. Para obtener detalles sobre cómo crear y restaurar desde una copia de seguridad para máquinas virtuales en OpenShift Virtualization implementadas en la plataforma OpenShift Container, consultelink:https://docs.netapp.com/us-en/netapp-solutions-virtualization/openshift/osv-vm-dp-using-tp.html["aquí"^] .
+

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: openshift/os-adv-mgmt-cluster-lcm.html 
+keywords: OpenShift, OCP, Trident, NetApp ONTAP, ONTAP, Trident, Red Hat OpenShift, Advanced Cluster Management, Advanced Cluster Management for Kubernetes 
+summary: Gestión avanzada de clústeres para Kubernetes en Red Hat OpenShift con NetApp 
+---
+= Gestión del ciclo de vida del clúster
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para administrar diferentes clústeres de OpenShift, puede crearlos o importarlos en Administración avanzada de clústeres.
+
+. Primero navegue a Automatizar Infraestructuras > Clústeres.
+. Para crear un nuevo clúster de OpenShift, complete los siguientes pasos:
++
+.. Crear una conexión de proveedor: navegue a Conexiones de proveedor y haga clic en Agregar una conexión, proporcione todos los detalles correspondientes al tipo de proveedor seleccionado y haga clic en Agregar.
++
+image:redhat-openshift-075.png["Agregar conexión de proveedor"]
+
+.. Para crear un nuevo clúster, navegue a Clústeres y haga clic en Agregar un clúster > Crear un clúster.  Proporcione los detalles del clúster y el proveedor correspondiente y haga clic en Crear.
++
+image:redhat-openshift-076.png["Agregar clústeres"]
+
+.. Una vez creado el clúster, aparece en la lista de clústeres con el estado Listo.
+
+
+. Para importar un clúster existente, complete los siguientes pasos:
++
+.. Vaya a Clústeres y haga clic en Agregar un clúster > Importar un clúster existente.
+.. Ingrese el nombre del clúster y haga clic en Guardar importación y generar código.  Se muestra un comando para agregar el clúster existente.
+.. Haga clic en Copiar comando y ejecute el comando en el clúster que se agregará al clúster central.  Esto inicia la instalación de los agentes necesarios en el clúster y, una vez completado este proceso, el clúster aparece en la lista de clústeres con el estado Listo.
++
+image:redhat-openshift-077.png["Importar clúster existente"]
+
+
+
+. Después de crear e importar varios clústeres, puede supervisarlos y administrarlos desde una única consola.
+

@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: videos/anthos-videos.html 
+keywords: video, demonstration, deployment 
+summary: Demuestra algunas de las capacidades documentadas en este documento. 
+---
+= Vea videos sobre Anthos con NetApp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Explore las características clave y los escenarios de implementación para NetApp con Google Anthos a través de una selección curada de videos y demostraciones.  Estos recursos muestran las mejores prácticas, los pasos de integración y casos de uso del mundo real.
+
+
+
+== Implementación y configuración de Anthos en hardware
+
+.Implementar Anthos en hardware real: Anthos con NetApp
+video::a9e5fd88-6bdc-4d23-a4b5-b01200effc06[panopto,width=360]
+
+
+== Implementación y configuración de Trident en Anthos
+
+.Implementar Trident en el clúster Anthos 1.14
+video::8ea4c03a-85e9-4d90-bf3c-afb6011b051c[panopto,width=360]

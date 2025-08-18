@@ -1,0 +1,142 @@
+---
+sidebar: sidebar 
+permalink: anthos/anthos-deploy-app-cloud-console.html 
+keywords: Anthos, Trident, NetApp ONTAP, ONTAP, Trident 
+summary: Cómo implementar una aplicación en su clúster Anthos GKE local mediante Google Cloud Console. 
+---
+= Implementar una aplicación desde Google Cloud Console Marketplace
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+En esta sección se detalla cómo implementar una aplicación en su clúster Anthos GKE local mediante Google Cloud Console.
+
+
+
+== Prerrequisitos
+
+* Un clúster de Anthos implementado localmente y registrado en Google Cloud Console
+* Un balanceador de carga MetalLB configurado en su clúster Anthos
+* Una cuenta con permisos para implementar aplicaciones en el clúster
+* Una cuenta de facturación con Google Cloud si eliges una aplicación con costos asociados (opcional)
+
+
+
+
+== Implementar una aplicación
+
+Para este caso de uso, implementamos una aplicación de WordPress simple en uno de nuestros clústeres Anthos usando Google Cloud Console.  La implementación utiliza almacenamiento persistente proporcionado por NetApp ONTAP en una clase de almacenamiento predefinida.  Luego demostramos dos métodos diferentes para modificar el servicio predeterminado de las aplicaciones para que el balanceador de carga MetalLB le proporcione una dirección IP y lo exponga al mundo.
+
+Para implementar una aplicación de esta manera, complete los siguientes pasos:
+
+. Verifique que el clúster que desea implementar sea accesible en Google Cloud Console.
++
+image:a-w-n-use-case-deploy-app-010.png["Clústeres registrados"]
+
+. Seleccione Aplicaciones en el menú del lado izquierdo, seleccione el menú de opciones de tres puntos en la parte superior y seleccione Implementar desde Marketplace, lo que abrirá una nueva ventana desde la que puede seleccionar una aplicación de Google Cloud Marketplace.
++
+image:a-w-n-use-case-deploy-app-009.png["Mercado de aplicaciones"]
+
+. Busca la aplicación que deseas instalar, en este caso WordPress.
++
+image:a-w-n-use-case-deploy-app-008.png["Buscar WordPress"]
+
+. Después de seleccionar la aplicación WordPress, aparecerá una pantalla de descripción general.  Haga clic en el botón Configurar.
++
+image:a-w-n-use-case-deploy-app-007.png["Pantalla de descripción general de WordPress"]
+
+. En la siguiente página debes seleccionar el cluster donde realizar la implementación, en nuestro caso Demo-Cluster.  Seleccione o cree un nuevo espacio de nombres y un nombre de instancia de aplicación, y seleccione qué clases de almacenamiento y tamaños de volúmenes persistentes necesita tanto para la aplicación WordPress como para su base de datos de respaldo MariaDB.  En ambos casos, elegimos la clase de almacenamiento ONTAP-NAS-CSI.
++
+image:a-w-n-use-case-deploy-app-006.png["Configuración de WordPress"]
+
++
+
+NOTE: No seleccione Habilitar acceso a IP pública.  Al hacerlo, se crea un servicio de tipo NodePort al que no se puede acceder desde una implementación de Anthos local.
+
+. Después de hacer clic en el botón Implementar, aparecerá una página con los detalles de la aplicación.  Puede actualizar esta página o iniciar sesión en su clúster mediante la CLI para verificar el estado de la implementación.
++
+image:a-w-n-use-case-deploy-app-005.png["Detalles de la aplicación"]
+
+. La CLI se puede utilizar para verificar el estado de la aplicación a medida que se implementa ejecutando el comando para obtener la información del pod en el espacio de nombres de nuestra aplicación: `kubectl get pods -n anthos-wp` .
++
+image:a-w-n-use-case-deploy-app-004.png["Pods de obtención de Kubectl"]
+
++
+
+NOTE: Observe en esta captura de pantalla que hay un pod de implementación en estado de error.  Esto es normal.  Este pod es un pod auxiliar que utiliza Google Cloud Console para implementar la aplicación que finaliza automáticamente después de que los demás pods hayan comenzado su proceso de inicialización.
+
+. Después de unos instantes, verifique que su aplicación esté ejecutándose.
++
+image:a-w-n-use-case-deploy-app-003.png["Aplicación en ejecución"]
+
+
+
+
+
+== Exponiendo la aplicación
+
+Una vez implementada la aplicación, tienes dos métodos para asignarle una IP accesible a nivel mundial.
+
+
+
+=== Uso de la consola de Google Cloud
+
+Puede exponer la aplicación mediante Google Cloud Console y editando la salida YAML de los servicios en un navegador para configurar una IP accesible públicamente.  Para ello, realice los siguientes pasos:
+
+. En Google Cloud Console, haga clic en Servicios e ingreso en el menú del lado izquierdo.
++
+image:a-w-n-use-case-deploy-app-011.png["Servicios e Ingreso"]
+
+. Haga clic en el `wordpress-wordpress-svc` servicio.  Esto abre la pantalla Detalles del servicio.  Haga clic en el botón Editar en la parte superior.
++
+image:a-w-n-use-case-deploy-app-012.png["Editar detalles del servicio"]
+
+. Se abre la página Detalles del servicio de edición que contiene la información YAML del servicio.  Desplácese hacia abajo hasta que vea el `spec:` sección y el `type:` valor, que se establece en `ClusterIP` .  Cambie este valor a `LoadBalancer` y haga clic en el botón Guardar.
++
+image:a-w-n-use-case-deploy-app-013.png["Tipo ClusterIP Valor"]
+
++
+image:a-w-n-use-case-deploy-app-014.png["Tipo LoadBalancer Valor"]
+
+. Cuando regrese a la página Detalles del servicio, el `Type:` ahora listas `LoadBalancer` y el `External endpoints:` El campo enumera una dirección IP asignada del grupo MetalLB y el puerto a través del cual se puede acceder a la aplicación.
++
+image:a-w-n-use-case-deploy-app-015.png["Detalles del servicio final"]
+
+
+
+
+
+=== Parcheando el servicio con Kubectl
+
+Puede exponer la aplicación mediante la CLI y el `kubectl patch` Comando para modificar su implementación y establecer una IP accesible públicamente. Para ello, siga los siguientes pasos:
+
+. Enumere los servicios asociados con los pods en su espacio de nombres con el `kubectl get services -n anthos-wp` dominio.
++
+image:a-w-n-use-case-deploy-app-002.png["Servicios de lista"]
+
+. Modificar el tipo de servicio de `ClusterIP` escribir `Loadbalancer` utilizando el siguiente comando:
++
+[listing]
+----
+kubectl patch svc wordpress-wordpress-svc -p '{"spec": {"type": "LoadBalancer"}}' -n anthos-wp'.
+----
++
+A este nuevo tipo de servicio se le asigna automáticamente una dirección IP disponible del grupo MetalLB.
+
++
+image:a-w-n-use-case-deploy-app-001.png["Servicio de parches para el equilibrador de carga de tipos"]
+
+
+
+
+
+== Visita la aplicación en la IP externa expuesta
+
+Ahora que tiene la aplicación expuesta con una dirección IP accesible públicamente, puede visitar su instancia de WordPress usando un navegador.
+
+image:a-w-n-use-case-deploy-app-016.png["WordPress en el navegador"]

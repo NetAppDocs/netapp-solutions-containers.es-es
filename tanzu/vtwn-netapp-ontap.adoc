@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: tanzu/vtwn-netapp-ontap.html 
+keywords: NetApp, ONTAP, AFF, FAS, iSCSI, NFS, Tanzu, VMware Tanzu with NetApp 
+summary: NetApp ONTAP es una poderosa herramienta de software de almacenamiento con capacidades como una GUI intuitiva, API REST con integración de automatización, análisis predictivo basado en IA y acciones correctivas, actualizaciones de hardware sin interrupciones e importación entre almacenamientos. 
+---
+= ONTAP de NetApp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp ONTAP es una poderosa herramienta de software de almacenamiento con capacidades como una GUI intuitiva, API REST con integración de automatización, análisis predictivo basado en IA y acciones correctivas, actualizaciones de hardware sin interrupciones e importación entre almacenamientos.
+
+[role="normal"]
+NetApp ONTAP es una poderosa herramienta de software de almacenamiento con capacidades como una GUI intuitiva, API REST con integración de automatización, análisis predictivo basado en IA y acciones correctivas, actualizaciones de hardware sin interrupciones e importación entre almacenamientos.
+
+Para obtener más información sobre el sistema de almacenamiento NetApp ONTAP , visite el sitio web https://www.netapp.com/data-management/ontap-data-management-software/["Sitio web de NetApp ONTAP"^] .
+
+ONTAP ofrece las siguientes características:
+
+* Un sistema de almacenamiento unificado con acceso simultáneo a datos y gestión de protocolos NFS, CIFS, iSCSI, FC, FCoE y FC-NVMe.
+* Los diferentes modelos de implementación incluyen configuraciones de hardware locales totalmente flash, híbridas y totalmente HDD; plataformas de almacenamiento basadas en máquinas virtuales en un hipervisor compatible como ONTAP Select; y en la nube como Cloud Volumes ONTAP.
+* Mayor eficiencia en el almacenamiento de datos en sistemas ONTAP con soporte para niveles automáticos de datos, compresión de datos en línea, deduplicación y compactación.
+* Almacenamiento controlado por QoS y basado en carga de trabajo.
+* Integración perfecta con una nube pública para organizar y proteger los datos.  ONTAP también ofrece sólidas capacidades de protección de datos que lo distinguen en cualquier entorno:
++
+** *Copias instantáneas de NetApp .*  Una copia de seguridad de datos rápida y en un momento determinado utilizando una cantidad mínima de espacio en disco y sin sobrecarga de rendimiento adicional.
+** * NetApp SnapMirror.*  Duplica las copias instantáneas de datos de un sistema de almacenamiento a otro.  ONTAP también permite reflejar datos en otras plataformas físicas y servicios nativos de la nube.
+** * NetApp SnapLock.*  Administración eficiente de datos no regrabables escribiéndolos en volúmenes especiales que no se pueden sobrescribir ni borrar durante un período designado.
+** * NetApp SnapVault.*  Realiza copias de seguridad de datos de varios sistemas de almacenamiento en una copia instantánea central que sirve como copia de seguridad para todos los sistemas designados.
+** * NetApp SyncMirror.*  Proporciona duplicación de datos a nivel RAID en tiempo real en dos complejos diferentes de discos que están conectados físicamente al mismo controlador.
+** * NetApp SnapRestore.*  Proporciona una restauración rápida de datos respaldados a pedido a partir de copias instantáneas.
+** * NetApp FlexClone.*  Proporciona aprovisionamiento instantáneo de una copia totalmente legible y escribible de un volumen NetApp basado en una copia Snapshot.
+
+
+
+
+Para obtener más información sobre ONTAP, consulte el https://docs.netapp.com/us-en/ontap/index.html["Centro de documentación de ONTAP 9"^] .
+
+
+NOTE: NetApp ONTAP está disponible en instalaciones locales, virtualizadas o en la nube.
+
+image:redhat-openshift-035.png["Figura que muestra el diálogo de entrada/salida o representa contenido escrito"]
+
+
+
+== Plataformas NetApp
+
+
+
+=== NetApp AFF/ FAS
+
+NetApp ofrece plataformas de almacenamiento robustas, all-flash (AFF) e híbridas de escalamiento horizontal (FAS), diseñadas a medida con rendimiento de baja latencia, protección de datos integrada y compatibilidad con múltiples protocolos.
+
+Ambos sistemas funcionan con el software de gestión de datos NetApp ONTAP , el software de gestión de datos más avanzado de la industria para una gestión de almacenamiento simplificada, de alta disponibilidad e integrada en la nube para brindar velocidad, eficiencia y seguridad de clase empresarial para sus necesidades de estructura de datos.
+
+Para obtener más información sobre las plataformas NETAPP AFF/ FAS , haga clic en https://docs.netapp.com/platstor/index.jsp["aquí"] .
+
+
+
+=== ONTAP Select
+
+ONTAP Select es una implementación definida por software de NetApp ONTAP que se puede implementar en un hipervisor en su entorno.  Se puede instalar en VMware vSphere o en KVM y proporciona toda la funcionalidad y experiencia de un sistema ONTAP basado en hardware.
+
+Para obtener más información sobre ONTAP Select, haga clic en https://docs.netapp.com/us-en/ontap-select/["aquí"] .
+
+
+
+=== Cloud Volumes ONTAP
+
+NetApp Cloud Volumes ONTAP es una versión implementada en la nube de NetApp ONTAP que se puede implementar en varias nubes públicas, incluidas Amazon AWS, Microsoft Azure y Google Cloud.
+
+Para obtener más información sobre Cloud Volumes ONTAP, haga clic en https://docs.netapp.com/us-en/occm/#discover-whats-new["aquí"] .

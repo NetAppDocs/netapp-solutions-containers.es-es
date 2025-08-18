@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: openshift/os-multitenancy-overview.html 
+keywords: OpenShift, OCP, Trident, NetApp ONTAP, Red Hat OpenShift, Multitenancy, Multi-tenancy 
+summary: Configuración de multitenencia en Red Hat OpenShift con NetApp 
+---
+= Configuración de multitenencia en Red Hat OpenShift con NetApp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Muchas organizaciones que ejecutan múltiples aplicaciones o cargas de trabajo en contenedores tienden a implementar un clúster Red Hat OpenShift por aplicación o carga de trabajo.  Esto les permite implementar un aislamiento estricto para la aplicación o carga de trabajo, optimizar el rendimiento y reducir las vulnerabilidades de seguridad.  Sin embargo, implementar un clúster Red Hat OpenShift separado para cada aplicación plantea su propio conjunto de problemas.  Aumenta la sobrecarga operativa al tener que supervisar y gestionar cada clúster por sí solo, aumenta los costos debido a los recursos dedicados para diferentes aplicaciones y dificulta la escalabilidad eficiente.
+
+Para superar estos problemas, se puede considerar ejecutar todas las aplicaciones o cargas de trabajo en un solo clúster Red Hat OpenShift.  Pero en una arquitectura de este tipo, el aislamiento de recursos y las vulnerabilidades de seguridad de las aplicaciones son uno de los principales desafíos.  Cualquier vulnerabilidad de seguridad en una carga de trabajo podría naturalmente extenderse a otra carga de trabajo, aumentando así la zona de impacto.  Además, cualquier utilización abrupta y descontrolada de recursos por parte de una aplicación puede afectar el rendimiento de otra aplicación, porque no existe una política de asignación de recursos predeterminada.
+
+Por lo tanto, las organizaciones buscan soluciones que recojan lo mejor de ambos mundos, por ejemplo, permitiéndoles ejecutar todas sus cargas de trabajo en un solo clúster y, al mismo tiempo, ofrecer los beneficios de un clúster dedicado para cada carga de trabajo.
+
+Una de esas soluciones efectivas es configurar la multitenencia en Red Hat OpenShift.  La multitenencia es una arquitectura que permite que varios inquilinos coexistan en el mismo clúster con un aislamiento adecuado de recursos, seguridad, etc.  En este contexto, un inquilino puede verse como un subconjunto de los recursos del clúster que están configurados para ser utilizados por un grupo particular de usuarios para un propósito exclusivo.  La configuración de múltiples inquilinos en un clúster Red Hat OpenShift ofrece las siguientes ventajas:
+
+* Una reducción en CapEx y OpEx al permitir que se compartan los recursos del clúster
+* Menores gastos operativos y de gestión
+* Proteger las cargas de trabajo de la contaminación cruzada por brechas de seguridad
+* Protección de cargas de trabajo contra una degradación inesperada del rendimiento debido a la contención de recursos
+
+
+Para un clúster OpenShift multiinquilino completamente realizado, se deben configurar cuotas y restricciones para los recursos del clúster que pertenecen a diferentes grupos de recursos: cómputo, almacenamiento, redes, seguridad, etc.  Si bien cubrimos ciertos aspectos de todos los recursos en esta solución, nos centramos en las mejores prácticas para aislar y proteger los datos atendidos o consumidos por múltiples cargas de trabajo en el mismo clúster Red Hat OpenShift mediante la configuración de múltiples inquilinos en recursos de almacenamiento asignados dinámicamente por Trident respaldado por NetApp ONTAP.

@@ -1,0 +1,209 @@
+---
+sidebar: sidebar 
+permalink: openshift/os-multitenancy-validation.html 
+keywords: OpenShift, OCP, Trident, NetApp ONTAP, Red Hat OpenShift, Multitenancy, Multi-tenancy 
+summary: Configuración de multitenencia en Red Hat OpenShift con NetApp 
+---
+= Validación
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para validar la arquitectura multiinquilino que se configuró en los pasos anteriores, complete los siguientes pasos:
+
+
+
+== Validar el acceso para crear PVC o pods en el proyecto asignado
+
+. Inicie sesión como ocp-project-1-user, desarrollador en proyecto-1.
+. Verifique el acceso para crear un nuevo proyecto.
++
+[source, console]
+----
+oc create ns sub-project-1
+----
+. Cree una PVC en el proyecto-1 utilizando la clase de almacenamiento asignada al proyecto-1.
++
+[source, console]
+----
+cat << EOF | oc create -f -
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: test-pvc-project-1
+  namespace: project-1
+  annotations:
+    trident.netapp.io/reclaimPolicy: Retain
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: project-1-sc
+EOF
+----
+. Verifique el PV asociado con el PVC.
++
+[source, console]
+----
+oc get pv
+----
+. Valide que el PV y su volumen se creen en una SVM dedicada al proyecto 1 en NetApp ONTAP.
++
+[source, console]
+----
+volume show -vserver project-1-svm
+----
+. Cree un pod en el proyecto-1 y monte el PVC creado en el paso anterior.
++
+[source, console]
+----
+cat << EOF | oc create -f -
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-pvc-pod
+  namespace: project-1
+spec:
+  volumes:
+    - name: test-pvc-project-1
+      persistentVolumeClaim:
+       claimName: test-pvc-project-1
+  containers:
+    - name: test-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: test-pvc-project-1
+EOF
+----
+. Verifique si el pod está ejecutándose y si montó el volumen.
++
+[source, console]
+----
+oc describe pods test-pvc-pod -n project-1
+----
+
+
+
+
+== Validar el acceso para crear PVC o pods en otro proyecto o utilizar recursos dedicados a otro proyecto
+
+. Inicie sesión como ocp-project-1-user, desarrollador en proyecto-1.
+. Cree una PVC en el proyecto-1 utilizando la clase de almacenamiento asignada al proyecto-2.
++
+[source, console]
+----
+cat << EOF | oc create -f -
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: test-pvc-project-1-sc-2
+  namespace: project-1
+  annotations:
+    trident.netapp.io/reclaimPolicy: Retain
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: project-2-sc
+EOF
+----
+. Crea un PVC en el proyecto-2.
++
+[source, console]
+----
+cat << EOF | oc create -f -
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: test-pvc-project-2-sc-1
+  namespace: project-2
+  annotations:
+    trident.netapp.io/reclaimPolicy: Retain
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: project-1-sc
+EOF
+----
+. Asegúrese de que los PVC `test-pvc-project-1-sc-2` y `test-pvc-project-2-sc-1` no fueron creados
++
+[source, console]
+----
+oc get pvc -n project-1
+oc get pvc -n project-2
+----
+. Crear un pod en el proyecto-2.
++
+[source, console]
+----
+cat << EOF | oc create -f -
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-pvc-pod
+  namespace: project-1
+spec:
+  containers:
+    - name: test-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+EOF
+----
+
+
+
+
+== Validar el acceso para ver y editar proyectos, cuotas de recursos y clases de almacenamiento
+
+. Inicie sesión como ocp-project-1-user, desarrollador en proyecto-1.
+. Verificar el acceso para crear nuevos proyectos.
++
+[source, console]
+----
+oc create ns sub-project-1
+----
+. Validar el acceso para ver proyectos.
++
+[source, console]
+----
+oc get ns
+----
+. Verifique si el usuario puede ver o editar ResourceQuotas en el proyecto-1.
++
+[source, console]
+----
+oc get resourcequotas -n project-1
+oc edit resourcequotas project-1-sc-rq -n project-1
+----
+. Validar que el usuario tenga acceso para ver las clases de almacenamiento.
++
+[source, console]
+----
+oc get sc
+----
+. Compruebe el acceso para describir las clases de almacenamiento.
+. Validar el acceso del usuario para editar las clases de almacenamiento.
++
+[source, console]
+----
+oc edit sc project-1-sc
+----
+

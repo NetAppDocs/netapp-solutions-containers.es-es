@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: blogs.html 
+summary: Lea los blogs que ofrecen orientación práctica y mejores prácticas para integrar el almacenamiento ONTAP con las soluciones de virtualización de NetApp . 
+keywords: netapp, solutions, blogs 
+---
+= Lea los blogs sobre soluciones de contenedores de los expertos de NetApp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lea los blogs que ofrecen orientación práctica y mejores prácticas para integrar el almacenamiento ONTAP con las soluciones de contenedores de NetApp .
+
+
+
+== Implementación e integración de OpenShift
+
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Simplifying-Trident-Installation-on-Red-Hat-OpenShift-with-the-New-Certified/ba-p/459710["Simplificación de la instalación de Trident en Red Hat OpenShift con el nuevo operador certificado de Trident"]
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Unlock-Seamless-iSCSI-Storage-Integration-A-Guide-to-FSxN-on-ROSA-Clusters-for/ba-p/459124["Desbloquee la integración perfecta del almacenamiento iSCSI: una guía para FSxN en clústeres ROSA para iSCSI"]
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Amazon-FSx-for-NetApp-ONTAP-with-Red-Hat-OpenShift-Service-on-AWS-ROSA-using/ba-p/456167["Amazon FSx for NetApp ONTAP con Red Hat OpenShift Service en AWS (ROSA) mediante un plano de control alojado"]
+* link:https://netapp.io/2021/05/21/docker-rate-limit-issue/["Instalación de NetApp Trident en Red Hat OpenShift: ¡Cómo solucionar el problema 'toomanyrequests' de Docker!"]
+
+
+
+
+== Protección de datos y copias de seguridad
+
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Crash-Consistent-Backup-and-Restore-Operations-for-OpenShift-Virtualization-VMs/ba-p/459417["Operaciones de copia de seguridad y restauración consistentes ante fallos para máquinas virtuales de OpenShift Virtualization con Trident 25.02"]
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/A-Backup-and-Restore-option-for-VM-data-protection-in-OpenShift-Virtualization/ba-p/452279["Una opción de copia de seguridad y restauración para la protección de datos de máquinas virtuales en OpenShift Virtualization"]
+
+
+
+
+== Virtualización y operaciones de máquinas virtuales
+
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Live-Migration-of-VMs-with-OpenShift-Virtualization-on-ROSA-and-Amazon-FSx-for/ba-p/456213["Migración en vivo de máquinas virtuales con OpenShift Virtualization en ROSA y Amazon FSx for NetApp ONTAP"]
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/ONTAP-for-OpenShift-Virtualization-VMs-non-disruptive-volume-move-operation-is/ba-p/451941["ONTAP para máquinas virtuales de virtualización OpenShift: la operación de traslado de volumen sin interrupciones es suya"]
+
+
+
+
+== Integración y rendimiento del almacenamiento
+
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Using-NVMe-TCP-to-consume-ONTAP-storage-for-your-modern-containerized-apps-on/ba-p/453706["Uso de NVMe/TCP para consumir almacenamiento ONTAP para sus aplicaciones contenedorizadas modernas en VMware"]
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/ONTAP-as-backend-storage-for-the-integrated-image-registry-in-OpenShift/ba-p/453142["ONTAP como almacenamiento backend para el registro de imágenes integrado en OpenShift Container Platform"]
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/NetApp-ONTAP-doubles-up-as-storage-for-logs-in-Red-Hat-OpenShift-Container/ba-p/449280["NetApp ONTAP también funciona como almacenamiento de registros en Red Hat OpenShift Container Platform"]
+
+
+
+
+== Ecosistema de Kubernetes y VMware
+
+* link:https://blog.netapp.com/accelerate-your-k8s-journey["Uso de VMware Tanzu con ONTAP para acelerar su transición a Kubernetes"]
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Kubernetes-on-vSphere-Part-1/ba-p/445634["Kubernetes en vSphere (Parte 1)"]
+* link:https://community.netapp.com/t5/Tech-ONTAP-Blogs/Kubernetes-on-vSphere-Part-2/ba-p/445848["Kubernetes en vSphere (Parte 2)"]
+

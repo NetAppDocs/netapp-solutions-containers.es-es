@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: tanzu/vtwn-overview-tkg.html 
+keywords: VMware Tanzu, Tanzu, Tanzu Kubernetes Grid, DevOps, Netapp, Trident, Trident Protect 
+summary:  
+---
+= Descripción general de VMware Tanzu Kubernetes Grid (TKG)
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+VMware Tanzu Kubernetes Grid, también conocido como TKG, le permite implementar clústeres de Tanzu Kubernetes en entornos de nube híbrida o nube pública.  TKG se instala como un clúster de administración, que es en sí mismo un clúster de Kubernetes, que implementa y opera los clústeres de Tanzu Kubernetes.  Estos clústeres de Tanzu Kubernetes son los clústeres de carga de trabajo de Kubernetes en los que se implementa la carga de trabajo real.
+
+Tanzu Kubernetes Grid se basa en algunos de los proyectos comunitarios prometedores y ofrece una plataforma Kubernetes desarrollada, comercializada y respaldada por VMware.  Además de la distribución de Kubernetes, Tanzu Kubernetes Grid proporciona complementos adicionales que son servicios esenciales de nivel de producción, como registro, equilibrio de carga, autenticación, etc.  VMware TKG con clúster de administración se usa ampliamente en entornos vSphere 6.7 y, aunque es compatible, no es una implementación recomendada para entornos vSphere 7 porque TKGS tiene capacidades de integración nativas con vSphere 7.
+
+image:vtwn-002.png["VMware Tanzu Kubernetes Grid con clúster de administración"]
+
+Para obtener más información sobre Tanzu Kubernetes Grid, consulte la documentaciónlink:https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.5/vmware-tanzu-kubernetes-grid-15/GUID-release-notes.html["aquí"^] .
+
+Dependiendo de si Tanzu Kubernetes Grid se instala localmente en un clúster vSphere o en entornos de nube, prepare e implemente Tanzu Kubernetes Grid siguiendo la guía de instalaciónlink:https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.5/vmware-tanzu-kubernetes-grid-15/GUID-mgmt-clusters-prepare-deployment.html["aquí"^] .
+
+Después de haber instalado el clúster de administración para Tanzu Kubernetes Grid, implemente los clústeres de usuarios o los clústeres de carga de trabajo según sea necesario siguiendo la documentaciónlink:https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.5/vmware-tanzu-kubernetes-grid-15/GUID-tanzu-k8s-clusters-index.html["aquí"^] .  El clúster de administración de VMware TKG requiere que se proporcione una clave SSH para la instalación y el funcionamiento de los clústeres de Tanzu Kubernetes.  Esta clave se puede utilizar para iniciar sesión en los nodos del clúster mediante el `capv` usuario.
