@@ -152,7 +152,9 @@ La afinidad o antiafinidad es una forma de definir reglas para un conjunto de m�
 
 Para configurar grupos de afinidad, consulte el enlace apropiado a continuación para su versión de VMware vSphere.
 
-https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html["Documentación de vSphere 9.0: Uso de reglas de afinidad de DRS"^]. https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html["vSphere 7.0 Documentación: usar reglas de afinidad DRS"^].
+* link:https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html["Documentación de vSphere 9.0: Uso de reglas de afinidad de DRS"^]
+* link:https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-resource-management/using-drs-clusters-to-manage-resources/using-vm-host-affinity-rules.html["vSphere 7.0 Documentación: usar reglas de afinidad DRS"^]
+
 
 
 NOTE: Anthos tiene una opción de configuración en cada individuo `cluster.yaml` archivo para crear automáticamente reglas de afinidad de nodos que se pueden habilitar o deshabilitar según la cantidad de hosts ESXi en su entorno.
